@@ -2,6 +2,12 @@
 
 DiBox est un conteneur d'injection de dépendances. Il suit la directive [PSR-11](https://www.php-fig.org/psr/psr-11/).
 
+## Installation
+
+```shell
+composer require wlib/dibox
+```
+
 ## Utilisation
 
 ```php
@@ -20,7 +26,7 @@ $bar = $box->make(Foo\Bar::class);
 
 // Passer des arguments au constructeur
 $bar = $box->make(Foo\Bar::class, ['a', 'b']); // indexés
-$bar = $box->make(Foo\Bar::class, ['greetings' => 'Hello']); // nommés
+$bar = $box->make(Foo\Bar::class, ['sGreetings' => 'Hello']); // nommés, ici, le constructeur attend l'entrée `$sGreetings`
 ```
 
 L'avantage de passer par le conteneur est de disposer de la **résolution automatique des classes** que vos constructeurs attendent :
