@@ -3,7 +3,7 @@
     "description": "DiBox is a Dependency Injection Container.",
     "type": "library",
     "keywords": ["container", "psr11", "dependency", "injection", "di", "wlib"],
-    "license": "CeCILL",
+    "license": "CECILL-2.1",
     "require": {
         "php": ">=7.4.0",
         "psr/container": "^2.0"
