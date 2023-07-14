@@ -1,0 +1,28 @@
+{
+    "name": "wlib/dibox",
+    "description": "DiBox is a Dependency Injection Container.",
+    "type": "library",
+    "require": {
+        "psr/container": "^2.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "wlib\\Tools\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cédric Ducarre",
+            "email": "samray1024@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
