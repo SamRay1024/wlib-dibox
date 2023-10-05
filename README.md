@@ -11,7 +11,7 @@ composer require wlib/dibox
 ## Utilisation
 
 ```php
-use wlib\Tools\DiBox;
+use wlib\Di\DiBox;
 
 $box = new DiBox();
 ```
@@ -162,7 +162,7 @@ Vous êtes encore là ? C'est bien beau, on peut déclarer plein de dépendances
 
 Vous avez donc besoin de créer des fournisseurs, qui viendront injecter les dépendances dont ils ont la responsabilité dans l'un de vos conteneurs.
 
-Il est donc temps d'implémenter le contrat `wlib\Tools\DiBoxProvider` :
+Il est donc temps d'implémenter le contrat `wlib\Di\DiBoxProvider` :
 
 ```php
 // Exemple (classique ?) d'un fournisseur des services HTTP d'une application
@@ -194,8 +194,8 @@ Voilà, vous maîtrisez ! À vous de jouer.
 
 Il est possible, en cas de malfonction, volontaire ou fortuite, que `DiBox` lève les exceptions suivantes :
 
-- `wlib\Tools\DiException` : levée au moindre truc qui chagrine le conteneur,
-- `wlib\Tools\DiNotFoundException` : conforme à **PSR-11**, levée si vous tentez d'accèder à une dépendance qui n'existe pas.
+- `wlib\Di\DiException` : levée au moindre truc qui chagrine le conteneur,
+- `wlib\Di\DiNotFoundException` : conforme à **PSR-11**, levée si vous tentez d'accèder à une dépendance qui n'existe pas.
 
 ## Tests unitaires
 

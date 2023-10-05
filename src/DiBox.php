@@ -34,7 +34,7 @@
  * 
  * ========================================================================== */
 
-namespace wlib\Tools;
+namespace wlib\Di;
 
 use Closure;
 use Psr\Container\ContainerInterface;
