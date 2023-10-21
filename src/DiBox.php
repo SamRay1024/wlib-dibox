@@ -88,7 +88,8 @@ class DiBox implements \ArrayAccess, ContainerInterface
 		}
 		elseif (is_object($mConcrete) && !$mConcrete instanceof \Closure)
 		{
-			return $this->aInstances[$sAbstract] = $mConcrete;
+			$this->aInstances[$sAbstract] = $mConcrete;
+			return $this;
 		}
 
 		if (!$mConcrete instanceof \Closure)
