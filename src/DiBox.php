@@ -211,9 +211,9 @@ class DiBox implements \ArrayAccess, ContainerInterface
 	 * @param DiBoxProvider $provider Provider instance.
 	 * @return self
 	 */
-	public function provide(DiBoxProvider $provider)
+	public function register(DiBoxProvider $provider)
 	{
-		$provider->register($this);
+		$provider->provide($this);
 
 		return $this;
 	}

@@ -46,5 +46,5 @@ interface DiBoxProvider
 	 *
 	 * @param DiBox Current container instance.
 	 */
-	public function register(DiBox $box);
+	public function provide(DiBox $box);
 }
