@@ -168,7 +168,7 @@ Il est donc temps d'implémenter le contrat `wlib\Di\DiBoxProvider` :
 // Exemple (classique ?) d'un fournisseur des services HTTP d'une application
 class HttpProvider implements DiBoxProvider
 {
-	public function register(DiBox $box)
+	public function provide(DiBox $box)
 	{
 		$box->bind('http.request', function($box, $args)
 		{
@@ -183,7 +183,7 @@ class HttpProvider implements DiBoxProvider
 }
 
 // Et pour le fournir au conteneur, rien de plus simple :
-$box->provide(new HttpProvider);
+$box->register(new HttpProvider);
 
 $response = $box->get('http.response'); // Et vous avez une réponse HTTP prête à servir vos applications / API
 ```
