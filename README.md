@@ -183,7 +183,7 @@ class HttpProvider implements DiBoxProvider
 }
 
 // Et pour le fournir au conteneur, rien de plus simple :
-$box->register(new HttpProvider);
+$box->register(HttpProvider::class);
 
 $response = $box->get('http.response'); // Et vous avez une réponse HTTP prête à servir vos applications / API
 ```

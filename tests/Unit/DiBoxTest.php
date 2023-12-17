@@ -1,15 +1,15 @@
 <?php
 
-use wlib\Tools\DiBox;
-use wlib\Tools\DiBoxProvider;
-use wlib\Tools\DiException;
-use wlib\Tools\DiNotFoundException;
+use wlib\Di\DiBox;
+use wlib\Di\DiBoxProvider;
+use wlib\Di\DiException;
+use wlib\Di\DiNotFoundException;
 
 class A {}
 class B { public function __construct(private A $a) {} }
 class C { public function __construct(public string $s) {} }
 
-$box = new DiBox;
+$box = new DiBox();
 
 test('Direct binding', function() use (&$box)
 {
@@ -92,16 +92,23 @@ test('Add a provider', function() use(&$box)
 {
 	class TestProvider implements DiBoxProvider
 	{
-		public function register(DiBox $box)
+		public function provide(DiBox $box)
 		{
 			$box->bind('from.provider', C::class);
 		}
 	}
 
-	$box->provide(new TestProvider);
+	$box->register(TestProvider::class);
 
 	expect($box->get('from.provider', ['s' => 'test']))->toBeInstanceOf(C::class);
 });
+
+test('DiException on wrong Di provider registered', function () use (&$box)
+{
+	class WrongProvider {}
+	$box->register(WrongProvider::class);
+})
+->throws(DiException::class);
 
 test('DiException on closure return error', function() use(&$box)
 {

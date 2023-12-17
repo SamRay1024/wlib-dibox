@@ -208,12 +208,18 @@ class DiBox implements \ArrayAccess, ContainerInterface
 	/**
 	 * Add a dependencies provider.
 	 *
-	 * @param DiBoxProvider $provider Provider instance.
+	 * @param string $sProviderFQCN Provider fully qualified class name.
 	 * @return self
 	 */
-	public function register(DiBoxProvider $provider)
+	public function register(string $sProviderFQCN)
 	{
-		$provider->provide($this);
+		if (!in_array(DiBoxProvider::class, class_implements($sProviderFQCN)))
+			throw new DiException(sprintf(
+				'"%s" must implement "%s" in order to be registered.',
+				$sProviderFQCN, DiBoxProvider::class	
+			));
+
+		(new $sProviderFQCN())->provide($this);
 
 		return $this;
 	}
