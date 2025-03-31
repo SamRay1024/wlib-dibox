@@ -60,6 +60,12 @@ class DiBox implements \ArrayAccess, ContainerInterface
 	private array $aInstances = [];
 
 	/**
+	 * Providers array.
+	 * @var array
+	 */
+	private array $aProdivers = [];
+
+	/**
 	 * Add a dependency.
 	 *
 	 * `$mConcrete` can be :
@@ -222,7 +228,19 @@ class DiBox implements \ArrayAccess, ContainerInterface
 		$provider = new $sProviderFQCN();
 		$provider->provide($this);
 
+		$this->aProdivers[$sProviderFQCN] = $provider;
+
 		return $provider;
+	}
+		
+	/**
+	 * Get registered providers.
+	 *
+	 * @return array
+	 */
+	public function getProviders(): array
+	{
+		return $this->aProdivers;
 	}
 
 	/**
